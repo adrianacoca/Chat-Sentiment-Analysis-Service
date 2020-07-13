@@ -13,9 +13,9 @@ Take a look at:
 **api test** to see how the information was introduced into the API  
 
 To get information from the api run:   
-url = "http://localhost:3000/chat/<topic>/list"   
+url = "http://localhost:3000/chat/(topic)/list"   
 
-choose topic from:    
+choose (topic) from:    
  - business   
  - politics   
  - forces   
