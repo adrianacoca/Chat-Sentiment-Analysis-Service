@@ -14,7 +14,7 @@ db = client.get_database()
 def createUser(username):
     user = {"name":f"{username}"}
     userinfo = db.user.insert_one(user)
-    return f"New user created! name: {username} , user id: {userinfo.inserted_id}"
+    return f"{userinfo.inserted_id}"
 
 #Chat Endpoints
 
@@ -24,7 +24,7 @@ def createChat():
     conv_name = request.args.get("conv_name")
     p_dict={"conversation name":conv_name, "participants":participants}
     conversation = db.chats.insert_one(p_dict)
-    return  f"New chat created! Chat name: {conv_name}, Chat id: {conversation.inserted_id}"
+    return  f"{conversation.inserted_id}"
 
 @app.route ("/chat/<conversation_id>/adduser")
 def user(conversation_id):
