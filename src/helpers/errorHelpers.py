@@ -1,4 +1,4 @@
-from flask import request
+'''from flask import request
 
 
 class APIError(Exception):
@@ -36,4 +36,4 @@ def errorHelper(validQueryParams=[]):
         wrapper.__name__ = fn.__name__
         return wrapper
 
-    return decorator
+    return decorator'''
