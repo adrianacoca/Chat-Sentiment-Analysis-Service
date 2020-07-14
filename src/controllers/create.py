@@ -5,6 +5,7 @@ from flask import request
 import re
 from flask import Flask
 from bson.objectid import ObjectId
+from helpers.error import *
 
 client = MongoClient(DBURL)
 db = client.get_database()
@@ -12,9 +13,15 @@ db = client.get_database()
 #User Endpoints
 @app.route ("/user/create/<username>")
 def createUser(username):
+    #if validateUsername(username)==False:
     user = {"name":f"{username}"}
     userinfo = db.user.insert_one(user)
     return f"{userinfo.inserted_id}"
+    """
+    else: 
+        res = {"message":f"user with name {username} already exists"}
+        return res
+    """
 
 #Chat Endpoints
 
