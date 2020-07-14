@@ -5,6 +5,7 @@ from flask import request
 import re
 from flask import Flask
 from bson.objectid import ObjectId
+import json
 
 client = MongoClient(DBURL)
 db = client.get_database()
@@ -19,6 +20,5 @@ def Welcome():
 #@errorHelper(["list"])
 def GetConv(conversation_id): 
     conv = ObjectId(conversation_id)
-    conversation = [t for t in db.messages.find({"chat_id": conversation_id}, {"_id":0,"text":1})]
-    print(conversation)
-    return conversation
+    conversation = list(db.messages.find({"chat_id": conv}, {"_id":0,"text":1}))
+    return json.dumps(conversation)
